@@ -9,11 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleAppDataModels", "Sc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleAppContracts", "ScheduleAppContracts\ScheduleAppContracts.csproj", "{112D7FBE-8425-42D6-B566-5C875E02BE40}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleAppListImplement", "ScheduleAppListImplement\ScheduleAppListImplement.csproj", "{A6339442-7B26-430C-8E81-EDFAA1EBD0F9}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleAppBusinessLogic", "ScheduleAppBusinessLogic\ScheduleAppBusinessLogic.csproj", "{8D9879BA-014D-4638-B234-F016B86BE355}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleAppDataBaseImplement", "ScheduleAppDataBaseImplement\ScheduleAppDataBaseImplement.csproj", "{6AEE5DE2-AD00-40AC-8488-4A36F69B0D21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleAppDataBaseImplement", "ScheduleAppDataBaseImplement\ScheduleAppDataBaseImplement.csproj", "{6AEE5DE2-AD00-40AC-8488-4A36F69B0D21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +31,6 @@ Global
 		{112D7FBE-8425-42D6-B566-5C875E02BE40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{112D7FBE-8425-42D6-B566-5C875E02BE40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{112D7FBE-8425-42D6-B566-5C875E02BE40}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A6339442-7B26-430C-8E81-EDFAA1EBD0F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A6339442-7B26-430C-8E81-EDFAA1EBD0F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A6339442-7B26-430C-8E81-EDFAA1EBD0F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A6339442-7B26-430C-8E81-EDFAA1EBD0F9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8D9879BA-014D-4638-B234-F016B86BE355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8D9879BA-014D-4638-B234-F016B86BE355}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D9879BA-014D-4638-B234-F016B86BE355}.Release|Any CPU.ActiveCfg = Release|Any CPU

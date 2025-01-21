@@ -1,4 +1,5 @@
-﻿using ScheduleAppDataModels.Models;
+﻿using ScheduleAppDataModels.Enums;
+using ScheduleAppDataModels.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,5 +36,8 @@ namespace ScheduleAppContracts.ViewModels
         public int TeacherId { get; set; }
 
         public int GroupId { get; set; }
+
+        [DisplayName("Номер пары")]
+        public LessonNumbers LessonNumbers {  get; set; }
     }
 }

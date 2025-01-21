@@ -33,7 +33,8 @@ namespace ScheduleAppDataBaseImplement.Implements
                     SubjectId = s.SubjectId,
                     RoomId = s.RoomId,
                     TeacherId = s.TeacherId,
-                    GroupId = s.GroupId
+                    GroupId = s.GroupId,
+                    LessonNumbers = s.LessonNumbers
                 })
                 .ToList();
         }
@@ -41,6 +42,21 @@ namespace ScheduleAppDataBaseImplement.Implements
         public List<ScheduleViewModel> GetFilteredList(ScheduleSearchModel model)
         {
             using var context = new DataBaseImplement();
+            if (model.LessonNumber.HasValue)
+            {
+                return context.Schedules
+                    .Include(s => s.Teacher)
+                    .Where(s => s.LessonNumbers == model.LessonNumber)
+                .Select(s => new ScheduleViewModel
+                {
+                    Id = s.Id,
+                    Date = s.Date,
+                    TeacherName = s.Teacher.TeacherName,
+                    TeacherId = s.TeacherId,
+                    LessonNumbers = s.LessonNumbers
+                })
+                .ToList();
+            }
             return context.Schedules
                 .Include(s => s.Room)
                 .Include(s => s.Teacher)
@@ -59,7 +75,8 @@ namespace ScheduleAppDataBaseImplement.Implements
                     SubjectId = s.SubjectId,
                     RoomId = s.RoomId,
                     TeacherId = s.TeacherId,
-                    GroupId = s.GroupId
+                    GroupId = s.GroupId,
+                    LessonNumbers = s.LessonNumbers
                 })
                 .ToList();
         }

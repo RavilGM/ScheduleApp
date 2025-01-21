@@ -40,6 +40,8 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
+            comboBoxLessonNumber = new ComboBox();
+            label6 = new Label();
             SuspendLayout();
             // 
             // buttonCanelSaveSchedule
@@ -85,34 +87,30 @@
             comboBoxRoom.Name = "comboBoxRoom";
             comboBoxRoom.Size = new Size(200, 23);
             comboBoxRoom.TabIndex = 16;
-            comboBoxRoom.SelectedIndexChanged += comboBoxRoom_SelectedIndexChanged;
             // 
             // comboBoxTeacher
             // 
             comboBoxTeacher.FormattingEnabled = true;
-            comboBoxTeacher.Location = new Point(216, 79);
+            comboBoxTeacher.Location = new Point(216, 108);
             comboBoxTeacher.Name = "comboBoxTeacher";
             comboBoxTeacher.Size = new Size(200, 23);
             comboBoxTeacher.TabIndex = 17;
-            comboBoxTeacher.SelectedIndexChanged += comboBoxTeacher_SelectedIndexChanged;
             // 
             // comboBoxSubject
             // 
             comboBoxSubject.FormattingEnabled = true;
-            comboBoxSubject.Location = new Point(216, 108);
+            comboBoxSubject.Location = new Point(216, 137);
             comboBoxSubject.Name = "comboBoxSubject";
             comboBoxSubject.Size = new Size(200, 23);
             comboBoxSubject.TabIndex = 18;
-            comboBoxSubject.SelectedIndexChanged += comboBoxSubject_SelectedIndexChanged;
             // 
             // comboBoxGroup
             // 
             comboBoxGroup.FormattingEnabled = true;
-            comboBoxGroup.Location = new Point(216, 137);
+            comboBoxGroup.Location = new Point(216, 168);
             comboBoxGroup.Name = "comboBoxGroup";
             comboBoxGroup.Size = new Size(200, 23);
             comboBoxGroup.TabIndex = 19;
-            comboBoxGroup.SelectedIndexChanged += comboBoxGroup_SelectedIndexChanged;
             // 
             // label2
             // 
@@ -126,7 +124,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(38, 116);
+            label3.Location = new Point(38, 145);
             label3.Name = "label3";
             label3.Size = new Size(55, 15);
             label3.TabIndex = 21;
@@ -135,7 +133,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(38, 145);
+            label4.Location = new Point(38, 176);
             label4.Name = "label4";
             label4.Size = new Size(46, 15);
             label4.TabIndex = 22;
@@ -144,17 +142,37 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(38, 87);
+            label5.Location = new Point(38, 116);
             label5.Name = "label5";
             label5.Size = new Size(91, 15);
             label5.TabIndex = 23;
             label5.Text = "Преподаватель";
+            // 
+            // comboBoxLessonNumber
+            // 
+            comboBoxLessonNumber.FormattingEnabled = true;
+            comboBoxLessonNumber.Location = new Point(216, 79);
+            comboBoxLessonNumber.Name = "comboBoxLessonNumber";
+            comboBoxLessonNumber.Size = new Size(200, 23);
+            comboBoxLessonNumber.TabIndex = 24;
+            comboBoxLessonNumber.SelectedIndexChanged += comboBoxLessonNumber_SelectedIndexChanged;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(38, 87);
+            label6.Name = "label6";
+            label6.Size = new Size(35, 15);
+            label6.TabIndex = 25;
+            label6.Text = "Пара";
             // 
             // FormSchedule
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(440, 362);
+            Controls.Add(label6);
+            Controls.Add(comboBoxLessonNumber);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -168,8 +186,8 @@
             Controls.Add(buttonSaveSchedule);
             Controls.Add(label1);
             Name = "FormSchedule";
-            Text = "FormSchedule";
-            this.Load += new System.EventHandler(this.FormSchedule_Load);
+            Text = "Создание записи в расписании";
+            Load += FormSchedule_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -188,5 +206,7 @@
         private Label label3;
         private Label label4;
         private Label label5;
+        private ComboBox comboBoxLessonNumber;
+        private Label label6;
     }
 }

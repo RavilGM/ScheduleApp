@@ -1,5 +1,6 @@
 ﻿using ScheduleAppContracts.BindingModels;
 using ScheduleAppContracts.ViewModels;
+using ScheduleAppDataModels.Enums;
 using ScheduleAppDataModels.Models;
 using System;
 
@@ -23,6 +24,9 @@ namespace ScheduleAppContracts.StoragesContracts.dbModels
 
         public DateTime Date { get; set; }
 
+        public LessonNumbers LessonNumbers {  get; set; }
+
+
         public static Schedule? Create(ScheduleBindingModel model)
         {
             if (model == null)
@@ -43,7 +47,8 @@ namespace ScheduleAppContracts.StoragesContracts.dbModels
                 SubjectId = model.SubjectId,
                 RoomId = model.RoomId,
                 TeacherId = model.TeacherId,
-                GroupId = model.GroupId
+                GroupId = model.GroupId,
+                LessonNumbers = model.LessonNumbers
             };
         }
 
@@ -66,6 +71,7 @@ namespace ScheduleAppContracts.StoragesContracts.dbModels
             RoomId = model.RoomId;
             TeacherId = model.TeacherId;
             GroupId = model.GroupId;
+            LessonNumbers = model.LessonNumbers;
         }
 
         public ScheduleViewModel GetViewModel => new()
@@ -76,10 +82,12 @@ namespace ScheduleAppContracts.StoragesContracts.dbModels
             RoomId = RoomId,
             TeacherId = TeacherId,
             GroupId = GroupId,
+            LessonNumbers = LessonNumbers,
             RoomName = Room?.RoomName,       // Если есть связь с Room
             TeacherName = Teacher?.TeacherName, // Если есть связь с Teacher
             SubjectName = Subject?.SubjectName, // Если есть связь с Subject
             GroupName = Group?.GroupName       // Если есть связь с Group
         };
+
     }
 }

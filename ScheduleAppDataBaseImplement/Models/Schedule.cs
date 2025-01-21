@@ -1,5 +1,6 @@
 ﻿using ScheduleAppContracts.BindingModels;
 using ScheduleAppContracts.ViewModels;
+using ScheduleAppDataModels.Enums;
 using ScheduleAppDataModels.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Xml.Linq;
 
 namespace ScheduleAppListImplement.Models
 {
-    public class Schedule : IScheduleModel
+    public class Schedule : IScheduleModel 
     {
         public int Id { get; private set; }
 
@@ -23,6 +24,8 @@ namespace ScheduleAppListImplement.Models
         public int GroupId { get; private set; }
 
         public DateTime Date { get; private set; }
+
+        public LessonNumbers LessonNumbers {  get; private set; }
 
         public static Schedule? Create(ScheduleBindingModel? model)
         {
@@ -37,7 +40,8 @@ namespace ScheduleAppListImplement.Models
                 RoomId = model.RoomId,
                 TeacherId = model.TeacherId,
                 GroupId = model.GroupId,
-                Date = model.Date
+                Date = model.Date,
+                LessonNumbers = model.LessonNumbers
             };
         }
 
@@ -52,6 +56,7 @@ namespace ScheduleAppListImplement.Models
             TeacherId = model.TeacherId;
             GroupId = model.GroupId;
             Date = model.Date;
+            LessonNumbers = model.LessonNumbers;
         }
 
         public ScheduleViewModel GetViewModel => new()
@@ -61,7 +66,11 @@ namespace ScheduleAppListImplement.Models
             RoomId = RoomId,
             TeacherId = TeacherId,
             GroupId = GroupId,
-            Date = Date
+            Date = Date,
+            LessonNumbers = LessonNumbers
+
         };
+
+        
     }
 }

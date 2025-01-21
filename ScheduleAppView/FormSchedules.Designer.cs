@@ -77,7 +77,6 @@
             dataGridViewSchedules.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewSchedules.Size = new Size(372, 450);
             dataGridViewSchedules.TabIndex = 12;
-            
             // 
             // buttonExportToExcel
             // 
@@ -100,7 +99,7 @@
             Controls.Add(buttonCreateSchedule);
             Controls.Add(dataGridViewSchedules);
             Name = "FormSchedules";
-            Text = "FormSchedules";
+            Text = "Расписание";
             ((System.ComponentModel.ISupportInitialize)dataGridViewSchedules).EndInit();
             ResumeLayout(false);
         }

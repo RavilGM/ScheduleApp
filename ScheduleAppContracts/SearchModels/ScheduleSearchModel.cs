@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScheduleAppDataModels.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,5 +20,7 @@ namespace ScheduleAppContracts.SearchModels
         public int? GroupId { get; set; } 
 
         public DateTime? Date { get; set; }
+
+        public LessonNumbers? LessonNumber { get; set; }
     }
 }

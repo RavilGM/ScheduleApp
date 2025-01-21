@@ -1,13 +1,19 @@
 ﻿using Microsoft.Extensions.Logging;
+using ScheduleAppBusinessLogic.HelpersLogic;
 using ScheduleAppContracts.BindingModels;
 using ScheduleAppContracts.BusinessLogicContracts;
 using ScheduleAppContracts.SearchModels;
+using ScheduleAppContracts.ViewModels;
+using ScheduleAppDataModels.Enums;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -35,6 +41,7 @@ namespace ScheduleAppView
             _teacherLogic = teacherLogic;
             _subjectLogic = subjectLogic;
             _groupLogic = groupLogic;
+
         }
 
         private void FormSchedule_Load(object sender, EventArgs e)
@@ -64,6 +71,7 @@ namespace ScheduleAppView
             }
         }
 
+
         private void LoadComboBoxes()
         {
             try
@@ -73,10 +81,7 @@ namespace ScheduleAppView
                 comboBoxRoom.DisplayMember = "RoomName";
                 comboBoxRoom.ValueMember = "Id";
 
-                var teachers = _teacherLogic.ReadList(null);
-                comboBoxTeacher.DataSource = teachers;
-                comboBoxTeacher.DisplayMember = "TeacherName";
-                comboBoxTeacher.ValueMember = "Id";
+
 
                 var subjects = _subjectLogic.ReadList(null);
                 comboBoxSubject.DataSource = subjects;
@@ -87,6 +92,10 @@ namespace ScheduleAppView
                 comboBoxGroup.DataSource = groups;
                 comboBoxGroup.DisplayMember = "GroupName";
                 comboBoxGroup.ValueMember = "Id";
+
+                comboBoxLessonNumber.DataSource = typeof(LessonNumbers).ToList();
+                comboBoxLessonNumber.DisplayMember = "Value";
+                comboBoxLessonNumber.ValueMember = "Key";
             }
             catch (Exception ex)
             {
@@ -119,7 +128,8 @@ namespace ScheduleAppView
                     RoomId = Convert.ToInt32(comboBoxRoom.SelectedValue),
                     TeacherId = Convert.ToInt32(comboBoxTeacher.SelectedValue),
                     SubjectId = Convert.ToInt32(comboBoxSubject.SelectedValue),
-                    GroupId = Convert.ToInt32(comboBoxGroup.SelectedValue)
+                    GroupId = Convert.ToInt32(comboBoxGroup.SelectedValue),
+                    LessonNumbers = (LessonNumbers)comboBoxLessonNumber.SelectedValue
                 };
 
                 var operationResult = _id.HasValue ? _logic.Update(model) : _logic.Create(model);
@@ -139,24 +149,27 @@ namespace ScheduleAppView
             }
         }
 
-        private void comboBoxRoom_SelectedIndexChanged(object sender, EventArgs e)
+
+
+        
+
+        private void comboBoxLessonNumber_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void comboBoxTeacher_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxSubject_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxGroup_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            if(comboBoxLessonNumber.SelectedIndex == 0)
+            {
+                return;
+            }
+            var teachersInWork = _logic.ReadList(new ScheduleSearchModel { LessonNumber = (LessonNumbers)comboBoxLessonNumber.SelectedValue });
+            var teachers = _teacherLogic.ReadList(null);
+            
+            foreach (var i in teachersInWork)
+            {
+                var teacher = _teacherLogic.ReadElement(new TeacherSearchModel { Id = i.TeacherId }); 
+                teachers.Remove(teacher);
+            }
+            comboBoxTeacher.DataSource = teachers;
+            comboBoxTeacher.DisplayMember = "TeacherName";
+            comboBoxTeacher.ValueMember = "Id";
         }
     }
 }

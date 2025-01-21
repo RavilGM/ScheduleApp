@@ -1,4 +1,5 @@
-﻿using ScheduleAppDataModels.Models;
+﻿using ScheduleAppDataModels.Enums;
+using ScheduleAppDataModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +22,6 @@ namespace ScheduleAppContracts.BindingModels
 
         public DateTime Date { get; set; }
 
+        public LessonNumbers LessonNumbers {  get; set; }
     }
 }

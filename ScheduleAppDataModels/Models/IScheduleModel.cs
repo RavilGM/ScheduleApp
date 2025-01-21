@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScheduleAppDataModels.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,7 @@ namespace ScheduleAppDataModels.Models
         int TeacherId { get; }          
         int GroupId { get; }            
         DateTime Date { get; }
+
+        LessonNumbers LessonNumbers { get; }
     }
 }
